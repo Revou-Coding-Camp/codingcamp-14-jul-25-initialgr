@@ -1,1 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vacatio Hero Section</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gray-100">
+
+  <div class="hero-background min-h-screen flex flex-col justify-between pb-20">
+    <!-- Navbar -->
+    <nav class="content-container w-full p-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="text-2xl font-extrabold text-gray-800">Vacatio</div>
+        <!-- Navigation links - hidden on mobile, flex on medium screens and up -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Services</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Package</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">About Us</a>
+        </div>
+        <!-- Sign In/Sign Up buttons -->
+        <div class="flex items-center space-x-4">
+          <button
+            class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-200 transition duration-300">Sign
+            In</button>
+          <button class="px-6 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300">Sign
+            Up</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Content -->
+    <div class="content-container container mx-auto px-6 flex-grow flex items-center">
+      <div class="max-w-xl text-gray-800">
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+          Realizing Your <br> Happy Holiday
+        </h1>
+        <p class="text-lg mb-8 max-w-md">
+          We offer a wide range of carefully crafted travel packages to ensure that your dream vacation becomes an
+          extraordinary reality.
+        </p>
+      </div>
+    </div>
+
+    <!-- Search Bar / Filter Section -->
+    <div class="content-container container mx-auto px-6">
+      <div
+        class="bg-white p-6 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+        <!-- Location Input -->
+        <div class="flex items-center space-x-3 w-full md:w-auto">
+          <i class="fas fa-map-marker-alt text-gray-500"></i>
+          <div>
+            <p class="text-sm text-gray-500">Location</p>
+            <p class="font-semibold text-gray-800">Canada</p>
+          </div>
+          <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+        </div>
+
+        <!-- Person Input - border and padding only on medium screens and up -->
+        <div class="flex items-center space-x-3 w-full md:w-auto md:border-l md:border-gray-200 md:pl-4">
+          <i class="fas fa-user text-gray-500"></i>
+          <div>
+            <p class="text-sm text-gray-500">Person</p>
+            <p class="font-semibold text-gray-800">2 Persons</p>
+          </div>
+          <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+        </div>
+
+        <!-- Date Input - border and padding only on medium screens and up -->
+        <div class="flex items-center space-x-3 w-full md:w-auto md:border-l md:border-gray-200 md:pl-4">
+          <i class="fas fa-calendar-alt text-gray-500"></i>
+          <div>
+            <p class="text-sm text-gray-500">Date</p>
+            <p class="font-semibold text-gray-800">October 18 / October 22</p>
+          </div>
+          <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+        </div>
+
+        <!-- Explore Trip Button -->
+        <button
+          class="w-full md:w-auto px-8 py-3 bg-blue-700 text-white rounded-full font-semibold hover:bg-blue-800 transition duration-300 shadow-md">
+          Explore Trip
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popular Destinations Section -->
+  <section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-between items-center mb-10">
+        <div>
+          <p class="text-blue-600 text-sm font-semibold uppercase mb-2">Let's Find</p>
+          <h2 class="text-4xl font-extrabold text-gray-800 leading-tight">
+            Popular Destinations <br> You Must Visit
+          </h2>
+        </div>
+        <div class="flex space-x-4">
+          <button
+            class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition duration-300">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button
+            class="w-12 h-12 rounded-full bg-blue-700 text-white flex items-center justify-center hover:bg-blue-800 transition duration-300">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Destination Card 1 -->
+        <article class="rounded-3xl shadow-lg overflow-hidden service-background-1">
+          <div class="w-full h-52"></div>
+          <div class="relative mt-8 px-5 pb-4">
+            <div class="bg-white rounded-2xl shadow-md p-4">
+              <h3 class="text-lg font-semibold">Moraine Lake, Canada</h3>
+              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="5 out of 5 stars">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <span class="text-gray-600 text-sm ml-2">(5.0)</span>
+              </div>
+              <div class="flex justify-between items-center mt-4">
+                <div class="text-indigo-900 font-bold text-xl">$ 2500 <span class="text-gray-400 font-normal text-sm">/
+                    3days</span></div>
+                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
+                    class="ml-1">→</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Destination Card 2 -->
+        <article class="rounded-3xl shadow-lg overflow-hidden service-background-2">
+          <div class="w-full h-52"></div>
+          <div class="relative mt-8 px-5 pb-4">
+            <div class="bg-white rounded-2xl shadow-md p-4">
+              <h3 class="text-lg font-semibold">Cappadocia, Turkey</h3>
+              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="5 out of 5 stars">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <span class="text-gray-600 text-sm ml-2">(5.0)</span>
+              </div>
+              <div class="flex justify-between items-center mt-4">
+                <div class="text-indigo-900 font-bold text-xl">$ 3000 <span class="text-gray-400 font-normal text-sm">/
+                    3days</span></div>
+                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
+                    class="ml-1">→</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Destination Card 3 -->
+        <article class="rounded-3xl shadow-lg overflow-hidden service-background-3">
+          <div class="w-full h-52"></div>
+          <div class="relative mt-8 px-5 pb-4">
+            <div class="bg-white rounded-2xl shadow-md p-4">
+              <h3 class="text-lg font-semibold">Colosseum, Roma</h3>
+              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4 out of 5 stars">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="far fa-star text-sm"></i>
+                <span class="text-gray-600 text-sm ml-2">(4.0)</span>
+              </div>
+              <div class="flex justify-between items-center mt-4">
+                <div class="text-indigo-900 font-bold text-xl">$ 1500 <span class="text-gray-400 font-normal text-sm">/
+                    3days</span></div>
+                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
+                    class="ml-1">→</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Services Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="text-blue-600 text-sm font-semibold uppercase mb-2">Discover</p>
+        <h2 class="text-4xl font-extrabold text-gray-800 leading-tight">
+          Our Services
+        </h2>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+          Here are the services we provide for your fun and awesome holiday trip. Realize your holiday only with us.
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row items-center lg:items-start gap-12">
+        <!-- Left Column: Images -->
+        <div class="flex-1 flex flex-col items-center lg:items-end gap-8 relative">
+          <div
+            class="mt-5 relative w-full max-w-sm lg:max-w-md rounded-2xl overflow-hidden shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-300 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:left-0">
+            <img src="img/services-2.jpg" alt="Beach Holiday" class="w-full h-96 object-cover">
+          </div>
+          <div
+            class="mt-20 relative w-64 max-w-sm lg:max-w-md rounded-2xl overflow-hidden shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
+            <img src="img/services-1.jpg" alt="Tour Guide Service" class="w-full h-80 object-cover">
+          </div>
+
+        </div>
+
+        <!-- Right Column: Service List -->
+        <div class="flex-1 space-y-8">
+          <!-- Service Item 1: Tour Guide -->
+          <article class="flex items-center space-x-4">
+            <div class="flex-shrink-0 text-3xl font-bold text-blue-700">01</div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Tour Guide</h3>
+              <p class="text-gray-600">Vacatio provides a tour guide rental service that is certainly at a friendly
+                price to guide your trip to enjoy your dream vacation.</p>
+            </div>
+          </article>
+
+          <!-- Service Item 2: Private Transport Rental -->
+          <article class="flex items-center space-x-4">
+            <div class="flex-shrink-0 text-3xl font-bold text-blue-700">02</div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Private Transport Rental</h3>
+              <p class="text-gray-600">Vacatio also provides private transportation rental services for your private
+                vacation with loved ones. We provide car, bicycle and motorbike rental services.</p>
+            </div>
+          </article>
+
+          <!-- Service Item 3: Holiday Package -->
+          <article class="flex items-center space-x-4">
+            <div class="flex-shrink-0 text-3xl font-bold text-blue-700">03</div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Holiday Package</h3>
+              <p class="text-gray-600">Vacatio provides vacation packages that are suitable for your vacation with
+                family, friends, and those closest to you. Make an appointment now!</p>
+            </div>
+          </article>
+
+          <!-- Service Item 4: Hotel Recommendation -->
+          <article class="flex items-center space-x-4">
+            <div class="flex-shrink-0 text-3xl font-bold text-blue-700">04</div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Hotel Recommendation</h3>
+              <p class="text-gray-600">On our website, we provide some hotel recommendations for you.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-background {
+  /* Placeholder image - replace with your actual image */
+  background-image: url('/img/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+}
+
+.hero-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Gradient overlay for better text readability */
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
+  z-index: 1;
+}
+
+.content-container {
+  position: relative;
+  z-index: 2;
+}
+
+.service-background-1 {
+  /* Placeholder image - replace with your actual image */
+  background-image: url('/img/vacation-1.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+}
+
+.service-background-2 {
+  /* Placeholder image - replace with your actual image */
+  background-image: url('/img/vacation-2.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+}
+
+.service-background-3 {
+  /* Placeholder image - replace with your actual image */
+  background-image: url('/img/vacation-3.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+}
