@@ -10,7 +10,98 @@
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hero-background {
+      /* Placeholder image - replace with your actual image */
+      background-image: url('https://placehold.co/1920x1080/E0F2F7/2C3E50?text=Vacation+Background');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      z-index: 0;
+    }
+
+    .hero-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* Gradient overlay for better text readability */
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
+      z-index: 1;
+    }
+
+    .content-container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Hide scrollbar for aesthetic purposes, but keep functionality */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    /* Modal specific styles */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1000;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border-radius: 1rem;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .close-button {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-100">
@@ -41,10 +132,11 @@
     <!-- Hero Content -->
     <div class="content-container container mx-auto px-6 flex-grow flex items-center">
       <div class="max-w-xl text-gray-800">
-        <!-- Hero Welcome Message -->
-        <div class="text-start my-8">
-          <p id="welcomeMessage" class="text-xl font-semibold">Welcome, visitor!</p>
+        <!-- Welcome Message -->
+        <div id="welcomeSection" class="mb-6">
+          <p id="welcomeMessage" class="text-xl md:text-2xl font-semibold mb-4">Welcome, visitor!</p>
         </div>
+
         <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
           Realizing Your <br> Happy Holiday
         </h1>
@@ -90,16 +182,16 @@
         </div>
 
         <!-- Explore Trip Button -->
-        <a href="#vacation"
-          class="w-full md:w-auto px-8 py-3 bg-blue-700 text-white rounded-full font-semibold hover:bg-blue-800 transition duration-300 shadow-md text-center">
+        <button
+          class="w-full md:w-auto px-8 py-3 bg-blue-700 text-white rounded-full font-semibold hover:bg-blue-800 transition duration-300 shadow-md">
           Explore Trip
-        </a>
+        </button>
       </div>
     </div>
   </div>
 
   <!-- Popular Destinations Section -->
-  <section id="vacation" class="py-16 bg-gray-100">
+  <section class="py-16 bg-gray-100">
     <div class="container mx-auto px-6">
       <div class="flex justify-between items-center mb-10">
         <div>
@@ -122,123 +214,128 @@
         </div>
       </div>
 
+      <!-- Destination Cards - Now always scrollable -->
       <div id="destination-cards-container" class="flex overflow-x-auto hide-scrollbar gap-8 pb-4">
         <!-- Destination Card 1 -->
-        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center service-background-1">
-          <div class="w-full h-52"></div>
-          <div class="relative mt-8 px-5 pb-4">
-            <div class="bg-white rounded-2xl shadow-md p-4">
-              <h3 class="text-lg font-semibold">Moraine Lake, Canada</h3>
-              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="5 out of 5 stars">
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <span class="text-gray-600 text-sm ml-2">(5.0)</span>
-              </div>
-              <div class="flex justify-between items-center mt-4">
-                <div class="text-indigo-900 font-bold text-xl">$ 2500 <span class="text-gray-400 font-normal text-sm">/
-                    3days</span></div>
-                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
-                    class="ml-1">→</span></a>
-              </div>
+        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center">
+          <img src="https://placehold.co/400x250/A0D9F7/FFFFFF?text=Moraine+Lake" alt="Moraine Lake, Canada"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Moraine Lake, Canada</h3>
+            <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4.5 out of 5 stars">
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star-half-alt text-sm"></i>
+              <span class="text-gray-600 text-sm ml-2">(4.5)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-blue-700">$2500 <span
+                  class="text-gray-500 text-base font-normal">/3days</span></p>
+              <a href="#" class="text-blue-600 font-semibold flex items-center space-x-1 hover:underline">
+                <span>Explore more</span>
+                <i class="fas fa-chevron-right text-xs"></i>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Destination Card 2 -->
-        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center service-background-2">
-          <div class="w-full h-52"></div>
-          <div class="relative mt-8 px-5 pb-4">
-            <div class="bg-white rounded-2xl shadow-md p-4">
-              <h3 class="text-lg font-semibold">Cappadocia, Turkey</h3>
-              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="5 out of 5 stars">
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <span class="text-gray-600 text-sm ml-2">(5.0)</span>
-              </div>
-              <div class="flex justify-between items-center mt-4">
-                <div class="text-indigo-900 font-bold text-xl">$ 3000 <span class="text-gray-400 font-normal text-sm">/
-                    3days</span></div>
-                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
-                    class="ml-1">→</span></a>
-              </div>
+        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center">
+          <img src="https://placehold.co/400x250/F7D9A0/FFFFFF?text=Cappadocia" alt="Cappadocia, Turkey"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Cappadocia, Turkey</h3>
+            <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="5 out of 5 stars">
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <span class="text-gray-600 text-sm ml-2">(5.0)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-blue-700">$3000 <span
+                  class="text-gray-500 text-base font-normal">/3days</span></p>
+              <a href="#" class="text-blue-600 font-semibold flex items-center space-x-1 hover:underline">
+                <span>Explore more</span>
+                <i class="fas fa-chevron-right text-xs"></i>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Destination Card 3 -->
-        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center service-background-3">
-          <div class="w-full h-52"></div>
-          <div class="relative mt-8 px-5 pb-4">
-            <div class="bg-white rounded-2xl shadow-md p-4">
-              <h3 class="text-lg font-semibold">Colosseum, Roma</h3>
-              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4 out of 5 stars">
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="far fa-star text-sm"></i>
-                <span class="text-gray-600 text-sm ml-2">(4.0)</span>
-              </div>
-              <div class="flex justify-between items-center mt-4">
-                <div class="text-indigo-900 font-bold text-xl">$ 1500 <span class="text-gray-400 font-normal text-sm">/
-                    3days</span></div>
-                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
-                    class="ml-1">→</span></a>
-              </div>
+        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center">
+          <img src="https://placehold.co/400x250/B0E0E6/FFFFFF?text=Colosseum" alt="Colosseum, Roma"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Colosseum, Roma</h3>
+            <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4 out of 5 stars">
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="far fa-star text-sm"></i>
+              <span class="text-gray-600 text-sm ml-2">(4.0)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-blue-700">$1500 <span
+                  class="text-gray-500 text-base font-normal">/3days</span></p>
+              <a href="#" class="text-blue-600 font-semibold flex items-center space-x-1 hover:underline">
+                <span>Explore more</span>
+                <i class="fas fa-chevron-right text-xs"></i>
+              </a>
             </div>
           </div>
         </article>
 
-        <!-- Destination Card 4 -->
-        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center service-background-4">
-          <div class="w-full h-52"></div>
-          <div class="relative mt-8 px-5 pb-4">
-            <div class="bg-white rounded-2xl shadow-md p-4">
-              <h3 class="text-lg font-semibold">Paris, France</h3>
-              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4 out of 5 stars">
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="far fa-star-half-stroke text-sm"></i>
-                <span class="text-gray-600 text-sm ml-2">(4.8)</span>
-              </div>
-              <div class="flex justify-between items-center mt-4">
-                <div class="text-indigo-900 font-bold text-xl">$ 2800 <span class="text-gray-400 font-normal text-sm">/
-                    4days</span></div>
-                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
-                    class="ml-1">→</span></a>
-              </div>
+        <!-- Add more cards here if needed -->
+        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center">
+          <img src="https://placehold.co/400x250/C1FFDD/FFFFFF?text=Paris" alt="Paris, France"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Paris, France</h3>
+            <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4.8 out of 5 stars">
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star-half-alt text-sm"></i>
+              <span class="text-gray-600 text-sm ml-2">(4.8)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-blue-700">$2800 <span
+                  class="text-gray-500 text-base font-normal">/4days</span></p>
+              <a href="#" class="text-blue-600 font-semibold flex items-center space-x-1 hover:underline">
+                <span>Explore more</span>
+                <i class="fas fa-chevron-right text-xs"></i>
+              </a>
             </div>
           </div>
         </article>
 
-        <!-- Destination Card 5 -->
-        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center service-background-5">
-          <div class="w-full h-52"></div>
-          <div class="relative mt-8 px-5 pb-4">
-            <div class="bg-white rounded-2xl shadow-md p-4">
-              <h3 class="text-lg font-semibold">Tokyo, Japan</h3>
-              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4 out of 5 stars">
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="fas fa-star text-sm"></i>
-                <i class="far fa-star-half-stroke text-sm"></i>
-                <span class="text-gray-600 text-sm ml-2">(4.7)</span>
-              </div>
-              <div class="flex justify-between items-center mt-4">
-                <div class="text-indigo-900 font-bold text-xl">$ 4800 <span class="text-gray-400 font-normal text-sm">/
-                    5days</span></div>
-                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
-                    class="ml-1">→</span></a>
-              </div>
+        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center">
+          <img src="https://placehold.co/400x250/FFDDC1/FFFFFF?text=Tokyo" alt="Tokyo, Japan"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Tokyo, Japan</h3>
+            <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4.7 out of 5 stars">
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star-half-alt text-sm"></i>
+              <span class="text-gray-600 text-sm ml-2">(4.7)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-blue-700">$3200 <span
+                  class="text-gray-500 text-base font-normal">/5days</span></p>
+              <a href="#" class="text-blue-600 font-semibold flex items-center space-x-1 hover:underline">
+                <span>Explore more</span>
+                <i class="fas fa-chevron-right text-xs"></i>
+              </a>
             </div>
           </div>
         </article>
@@ -247,7 +344,7 @@
   </section>
 
   <!-- Our Services Section -->
-  <section class="py-16 bg-white mb-10">
+  <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
       <div class="text-center mb-12">
         <p class="text-blue-600 text-sm font-semibold uppercase mb-2">Discover</p>
@@ -260,23 +357,30 @@
       </div>
 
       <div class="flex flex-col lg:flex-row items-center lg:items-start gap-12">
-        <!-- Left Column: Images -->
-        <div class="flex-1 flex flex-col items-center lg:items-end gap-8 relative">
-          <div
-            class="mt-5 relative w-full max-w-sm lg:max-w-md rounded-2xl overflow-hidden shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-300 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:left-0">
-            <img src="img/services-2.jpg" alt="Beach Holiday" class="w-full h-96 object-cover">
-          </div>
-          <div
-            class="mt-20 relative w-64 max-w-sm lg:max-w-md rounded-2xl overflow-hidden shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
-            <img src="img/services-1.jpg" alt="Tour Guide Service" class="w-full h-80 object-cover">
-          </div>
-
+        <!-- Left Column: Images - Updated with Vacation Car Card -->
+        <div class="flex-1 flex justify-center lg:justify-end">
+          <article class="w-full max-w-sm lg:max-w-md rounded-3xl shadow-lg overflow-hidden bg-white">
+            <img src="https://placehold.co/400x250/A0D9F7/2C3E50?text=Vacation+Car" alt="Vacation Car"
+              class="w-full h-52 object-cover">
+            <div class="p-6">
+              <h3 class="text-lg font-semibold">Vacation Car Rental</h3>
+              <div class="flex items-center mt-2 text-yellow-500 text-sm">
+                <span>★ ★ ★ ★ ☆</span>
+              </div>
+              <div class="flex justify-between items-center mt-4">
+                <div class="text-indigo-900 font-bold text-xl">$ 2500 <span class="text-gray-400 font-normal text-sm">/
+                    3days</span></div>
+                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
+                    class="ml-1">→</span></a>
+              </div>
+            </div>
+          </article>
         </div>
 
         <!-- Right Column: Service List -->
         <div class="flex-1 space-y-8">
           <!-- Service Item 1: Tour Guide -->
-          <article class="flex items-center space-x-4">
+          <article class="flex items-start space-x-4">
             <div class="flex-shrink-0 text-3xl font-bold text-blue-700">01</div>
             <div>
               <h3 class="text-xl font-bold text-gray-800 mb-2">Tour Guide</h3>
@@ -286,7 +390,7 @@
           </article>
 
           <!-- Service Item 2: Private Transport Rental -->
-          <article class="flex items-center space-x-4">
+          <article class="flex items-start space-x-4">
             <div class="flex-shrink-0 text-3xl font-bold text-blue-700">02</div>
             <div>
               <h3 class="text-xl font-bold text-gray-800 mb-2">Private Transport Rental</h3>
@@ -296,7 +400,7 @@
           </article>
 
           <!-- Service Item 3: Holiday Package -->
-          <article class="flex items-center space-x-4">
+          <article class="flex items-start space-x-4">
             <div class="flex-shrink-0 text-3xl font-bold text-blue-700">03</div>
             <div>
               <h3 class="text-xl font-bold text-gray-800 mb-2">Holiday Package</h3>
@@ -306,7 +410,7 @@
           </article>
 
           <!-- Service Item 4: Hotel Recommendation -->
-          <article class="flex items-center space-x-4">
+          <article class="flex items-start space-x-4">
             <div class="flex-shrink-0 text-3xl font-bold text-blue-700">04</div>
             <div>
               <h3 class="text-xl font-bold text-gray-800 mb-2">Hotel Recommendation</h3>
@@ -320,12 +424,12 @@
 
   <!-- Hidden Paradise Section -->
   <section class="py-16 bg-gray-100">
-    <div class="container mx-auto px-6 flex flex-col lg:flex-row lg:items-center gap-12">
+    <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center lg:items-start gap-12">
       <!-- Left Column: Text Content -->
       <div class="flex-1 text-center lg:text-left">
         <p class="text-blue-600 text-sm font-semibold uppercase mb-2">Hidden Paradise</p>
         <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-6">
-          Spending Vacation <br> Cappadocia, Turkey
+          Spending Vacation Time in <br> Cappadocia, Turkey
         </h2>
         <p class="text-gray-600 text-lg mb-8 max-w-xl mx-auto lg:mx-0">
           Santorini is an exotic island in Greece with a direct view of the sea. The island, whose real name is Thira,
@@ -339,35 +443,38 @@
       </div>
 
       <!-- Right Column: Image Grid -->
-      <div class="flex-1 grid grid-cols-2 grid-rows-2 gap-4 max-w-lg lg:max-w-none">
-        <figure class="rounded-2xl overflow-hidden shadow-lg col-span-2 h-[320px]">
-          <img src="img/hot-air-1.jpg" alt="Hot air balloons over Cappadocia" class="w-full h-full object-cover">
+      <div class="flex-1 grid grid-cols-2 grid-rows-2 gap-4 w-full max-w-lg lg:max-w-none">
+        <figure class="rounded-2xl overflow-hidden shadow-lg col-span-2">
+          <img src="https://placehold.co/600x400/D0E0F0/2C3E50?text=Hot+Air+Balloons"
+            alt="Hot air balloons over Cappadocia" class="w-full h-full object-cover">
         </figure>
-        <figure class="rounded-2xl overflow-hidden shadow-lg h-[280px]">
-          <img src="img/hot-air-2.jpg" alt="Cappadocia cave houses" class="w-full h-full object-cover">
+        <figure class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="https://placehold.co/300x200/E0F0D0/2C3E50?text=Cave+Houses" alt="Cappadocia cave houses"
+            class="w-full h-full object-cover">
         </figure>
-        <figure class="rounded-2xl overflow-hidden shadow-lg h-[280px]">
-          <img src="img/hot-air-3.jpg" alt="Breakfast with a view in Cappadocia" class="w-full h-full object-cover">
+        <figure class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="https://placehold.co/300x200/F0D0E0/2C3E50?text=Breakfast+View"
+            alt="Breakfast with a view in Cappadocia" class="w-full h-full object-cover">
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- New Section: Find New Vacation -->
-  <section class="py-16 bg-white te">
-    <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+  <!-- New Section: Insurance Marketplace -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center lg:items-start gap-12">
       <!-- Left Column: Text and Search -->
       <div class="flex-1 text-center lg:text-left">
         <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-6">
-          Find New Vacation <br> Don't Forget to Prepare...
+          Insurance Marketplace <br> for Trip & Vacation
         </h2>
         <p class="text-gray-600 text-lg mb-8 max-w-xl mx-auto lg:mx-0">
-          Let's search vacation you want! <br> Hidden vacation maybe appear here..
+          Compare the USA's Leading Trip & Vacation <br> Insurance Providers
         </p>
         <div
           class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
           <div class="relative w-full sm:w-auto flex-grow">
-            <input type="text" placeholder="Search Popular Destination Here..."
+            <input type="text" placeholder="Search Popular Quotes"
               class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
           </div>
@@ -379,7 +486,9 @@
         <div
           class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
           <div class="flex items-center space-x-2">
-
+            <!-- Placeholder for BBB logo -->
+            <img src="https://placehold.co/40x40/FFFFFF/000000?text=BBB" alt="BBB Accredited Business"
+              class="h-10 w-10">
             <span class="text-gray-800 font-bold text-xl">A+ Rating</span>
           </div>
           <div class="flex items-center text-yellow-500" role="img" aria-label="4.9 out of 5 stars">
@@ -427,10 +536,9 @@
                 <select id="country"
                   class="block w-full px-4 py-3 border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10">
                   <option value="">Select Country</option>
-                  <option value="Tokyo">Tokyo</option>
-                  <option value="Rome">Rome</option>
+                  <option value="USA">USA</option>
                   <option value="Canada">Canada</option>
-                  <option value="Turkey">Turkey</option>
+                  <option value="Mexico">Mexico</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <i class="fas fa-chevron-down text-xs"></i>
@@ -442,7 +550,7 @@
               <div class="flex-1">
                 <label for="departure-date" class="block text-gray-700 text-sm font-medium mb-2">Departure Date</label>
                 <div class="relative">
-                  <input required type="date" id="departure-date"
+                  <input type="date" id="departure-date"
                     class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                   <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <i class="fas fa-calendar-alt text-xs"></i>
@@ -452,7 +560,7 @@
               <div class="flex-1">
                 <label for="return-date" class="block text-gray-700 text-sm font-medium mb-2">Return Date</label>
                 <div class="relative">
-                  <input required type="date" id="return-date"
+                  <input type="date" id="return-date"
                     class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                   <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <i class="fas fa-calendar-alt text-xs"></i>
@@ -469,19 +577,19 @@
           <div class="space-y-6">
             <div>
               <label for="full-name" class="block text-gray-700 text-sm font-medium mb-2">Full Name</label>
-              <input required type="text" id="full-name"
+              <input type="text" id="full-name"
                 class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="e.g., John Doe">
             </div>
             <div>
               <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
-              <input required type="email" id="email"
+              <input type="email" id="email"
                 class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="e.g., john.doe@example.com">
             </div>
             <div>
               <label for="phone" class="block text-gray-700 text-sm font-medium mb-2">Phone Number</label>
-              <input required type="tel" id="phone"
+              <input type="tel" id="phone"
                 class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="e.g., +1 555 123 4567">
             </div>
@@ -494,7 +602,7 @@
           <div class="space-y-6">
             <div>
               <label for="card-number" class="block text-gray-700 text-sm font-medium mb-2">Card Number</label>
-              <input required type="text" id="card-number"
+              <input type="text" id="card-number"
                 class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="XXXX XXXX XXXX XXXX">
             </div>
@@ -502,15 +610,14 @@
               <div class="flex-1">
                 <label for="expiry-date" class="block text-gray-700 text-sm font-medium mb-2">Expiry Date
                   (MM/YY)</label>
-                <input required type="text" id="expiry-date"
+                <input type="text" id="expiry-date"
                   class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="MM/YY">
               </div>
               <div class="flex-1">
-                <label for="cvv" class="block text-gray-700 text-sm font-medium mb-2">CVV</label>
-                <input required type="number" id="cvv"
+                <label for="cvv"
                   class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="CVV">
+                  placeholder="XXX">
               </div>
             </div>
           </div>
@@ -580,12 +687,12 @@
   </footer>
 
   <!-- Welcome Modal -->
-  <div id="welcomeModal" class="fixed inset-0 bg-black/50 z-50 hidden flex justify-center items-center">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+  <div id="welcomeModal" class="modal flex">
+    <div class="modal-content">
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Welcome to Vacatio!</h2>
       <p class="text-gray-700 mb-4">Please enter your name to personalize your experience:</p>
       <div class="flex flex-col sm:flex-row gap-4 mb-6">
-        <input required type="text" id="welcomeVisitorNameInput" placeholder="Your Name"
+        <input type="text" id="welcomeVisitorNameInput" placeholder="Your Name"
           class="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
         <button id="welcomeSubmitNameButton"
           class="px-6 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition duration-300">Continue</button>
@@ -594,28 +701,203 @@
   </div>
 
   <!-- Booking Success Modal -->
-  <div id="bookingSuccessModal" class="fixed inset-0 bg-black/50 z-50 hidden flex justify-center items-center">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+  <div id="bookingSuccessModal" class="modal flex hidden">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal('bookingSuccessModal')">&times;</span>
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Booking Successful!</h2>
-      <div id="bookingDetails" class="bg-gray-100 p-4 rounded-lg text-gray-700 text-sm space-y-2">
-        <!-- JS akan isi disini -->
+      <p class="text-gray-700 mb-4">Thank you for your booking. Here are your details:</p>
+      <div id="bookingDetails" class="bg-gray-100 p-4 rounded-lg text-gray-700">
+        <!-- Booking details will be injected here by JavaScript -->
       </div>
-      <button
-        class="mt-6 w-full px-6 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300"
+      <button class="mt-6 px-6 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300"
         onclick="closeModal('bookingSuccessModal')">
         Close
       </button>
     </div>
   </div>
 
-  <!-- Warning Message -->
-  <div id="autoDismissAlert"
-    class="fixed top-4 left-1/2 transform -translate-x-1/2 -translate-y-10 opacity-0 transition-all duration-300 bg-red-500 text-white py-2 px-6 rounded shadow-lg hidden z-50">
-    <span id="autoDismissAlertText"></span>
-  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Welcome Modal Elements
+      const welcomeModal = document.getElementById('welcomeModal');
+      const welcomeVisitorNameInput = document.getElementById('welcomeVisitorNameInput');
+      const welcomeSubmitNameButton = document.getElementById('welcomeSubmitNameButton');
+      const welcomeMessageElem = document.getElementById('welcomeMessage');
+
+      // Booking Form Elements (from the existing multi-tab structure)
+      const bookingSuccessModal = document.getElementById('bookingSuccessModal');
+      const bookingDetails = document.getElementById('bookingDetails');
+      const countryInput = document.getElementById('country');
+      const departureDateInput = document.getElementById('departure-date');
+      const returnDateInput = document.getElementById('return-date');
+      const fullNameInput = document.getElementById('full-name');
+      const emailInput = document.getElementById('email');
+      const phoneInput = document.getElementById('phone');
+      const cardNumberInput = document.getElementById('card-number');
+      const expiryDateInput = document.getElementById('expiry-date');
+      const cvvInput = document.getElementById('cvv');
 
 
-  <script src="/js/script.js"></script>
+      // Check for existing user name in localStorage
+      const savedName = localStorage.getItem('userName');
+
+      if (savedName) {
+        welcomeModal.style.display = 'none'; // Hide welcome modal if name exists
+        welcomeMessageElem.textContent = `Welcome, ${savedName}!`; // Display saved name
+      } else {
+        welcomeModal.style.display = 'flex'; // Show welcome modal if no name
+      }
+
+      // Welcome Modal Handler
+      if (welcomeSubmitNameButton) {
+        welcomeSubmitNameButton.addEventListener('click', function () {
+          const name = welcomeVisitorNameInput.value.trim();
+          if (name) {
+            localStorage.setItem('userName', name);
+            welcomeModal.style.display = 'none';
+            welcomeMessageElem.textContent = `Welcome, ${name}!`;
+          } else {
+            // Using a non-blocking message instead of alert
+            welcomeVisitorNameInput.placeholder = 'Please enter your name!';
+            welcomeVisitorNameInput.classList.add('border-red-500');
+            welcomeVisitorNameInput.focus();
+          }
+        });
+      }
+
+      // Function to scroll the destination cards
+      function scrollDestinations(direction) {
+        const container = document.getElementById('destination-cards-container');
+        const scrollAmount = 320 + 32; // Card width (w-80) + gap (gap-8)
+        container.scrollBy({
+          left: direction * scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+      window.scrollDestinations = scrollDestinations; // Make it globally accessible for onclick
+
+      let currentTab = 'destination'; // Initial active tab
+
+      // Function to show a specific tab
+      function showTab(tabName) {
+        // Hide all tab contents
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.add('hidden');
+        });
+
+        // Deactivate all tab headers
+        document.querySelectorAll('.tab-header').forEach(header => {
+          header.classList.remove('active-tab');
+          header.querySelector('span:first-child').classList.remove('bg-blue-600', 'text-white');
+          header.querySelector('span:first-child').classList.add('border', 'border-gray-300');
+        });
+
+        // Show the selected tab content
+        document.getElementById(`${tabName}TabContent`).classList.remove('hidden');
+
+        // Activate the selected tab header
+        const activeHeader = document.querySelector(`.tab-header[data-tab="${tabName}"]`);
+        activeHeader.classList.add('active-tab');
+        activeHeader.querySelector('span:first-child').classList.add('bg-blue-600', 'text-white');
+        activeHeader.querySelector('span:first-child').classList.remove('border', 'border-gray-300');
+
+        currentTab = tabName; // Update current tab state
+        updateNextButton(); // Update button text based on current tab
+      }
+      window.showTab = showTab; // Make it globally accessible for onclick
+
+      // Function to handle the "NEXT" button click
+      function handleNext() {
+        if (currentTab === 'destination') {
+          showTab('traveler');
+        } else if (currentTab === 'traveler') {
+          showTab('payment');
+        } else if (currentTab === 'payment') {
+          // This is the "BOOK" action
+          collectAndShowBookingData();
+        }
+      }
+      window.handleNext = handleNext; // Make it globally accessible for onclick
+
+      // Function to update the "NEXT" button text
+      function updateNextButton() {
+        const nextButton = document.getElementById('nextButton');
+        if (currentTab === 'payment') {
+          nextButton.textContent = 'BOOK';
+        } else {
+          nextButton.textContent = 'NEXT';
+        }
+      }
+
+      // Function to collect booking data and show in modal
+      function collectAndShowBookingData() {
+        const country = countryInput ? countryInput.value : 'N/A';
+        const departureDate = departureDateInput ? departureDateInput.value : 'N/A';
+        const returnDate = returnDateInput ? returnDateInput.value : 'N/A';
+        const fullName = fullNameInput ? fullNameInput.value : 'N/A';
+        const email = emailInput ? emailInput.value : 'N/A';
+        const phone = phoneInput ? phoneInput.value : 'N/A';
+        const cardNumber = cardNumberInput ? cardNumberInput.value : '';
+        const expiryDate = expiryDateInput ? expiryDateInput.value : 'N/A';
+        const cvv = cvvInput ? cvvInput.value : '';
+
+        bookingDetails.innerHTML = `
+                    <p><strong>Country:</strong> ${country}</p>
+                    <p><strong>Departure Date:</strong> ${departureDate}</p>
+                    <p><strong>Return Date:</strong> ${returnDate}</p>
+                    <p><strong>Full Name:</strong> ${fullName}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Phone:</strong> ${phone}</p>
+                    <p><strong>Card Number:</strong> ${cardNumber ? '**** **** **** ' + cardNumber.slice(-4) : 'N/A'}</p>
+                    <p><strong>Expiry Date:</strong> ${expiryDate}</p>
+                    <p><strong>CVV:</strong> ${cvv ? '***' : 'N/A'}</p>
+                `;
+
+        openModal('bookingSuccessModal');
+      }
+
+      // Function to open a specific modal
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'flex';
+      }
+
+      // Function to close a specific modal
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+        if (modalId === 'bookingSuccessModal') {
+          // Reset form fields and local storage after booking success
+          if (countryInput) countryInput.value = '';
+          if (departureDateInput) departureDateInput.value = '';
+          if (returnDateInput) returnDateInput.value = '';
+          if (fullNameInput) fullNameInput.value = '';
+          if (emailInput) emailInput.value = '';
+          if (phoneInput) phoneInput.value = '';
+          if (cardNumberInput) cardNumberInput.value = '';
+          if (expiryDateInput) expiryDateInput.value = '';
+          if (cvvInput) cvvInput.value = '';
+
+          localStorage.removeItem('userName'); // Clear user name from local storage
+
+          // Scroll to top and refresh after 5 seconds
+          document.documentElement.scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => {
+            location.reload();
+          }, 5000); // 5 seconds
+        }
+      }
+      window.closeModal = closeModal; // Make it globally accessible for onclick
+
+      // Add event listeners to tab headers
+      document.querySelectorAll('.tab-header').forEach(header => {
+        header.addEventListener('click', function () {
+          showTab(this.dataset.tab);
+        });
+      });
+
+      // Initialize the first tab of the insurance form on page load
+      showTab('destination');
+    });
+  </script>
 </body>
 
 </html>

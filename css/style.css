@@ -54,3 +54,38 @@ body {
   position: relative;
   z-index: 0;
 }
+
+.service-background-4 {
+  /* Placeholder image - replace with your actual image */
+  background-image: url('/img/vacation-4.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+}
+
+.service-background-5 {
+  /* Placeholder image - replace with your actual image */
+  background-image: url('/img/vacation-5.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+}
+
+.content-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hide scrollbar for aesthetic purposes, but keep functionality */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
