@@ -4,7 +4,7 @@ This repository contains the front-end code for "Vacatio," a modern and responsi
 
 ## 🚀 Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+https://revou-coding-camp.github.io/codingcamp-14-jul-25-initialgr/
 
 ### Prerequisites
 
