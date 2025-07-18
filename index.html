@@ -1,1 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vacatio Hero Section</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gray-100">
+
+  <div class="hero-background min-h-screen flex flex-col justify-between pb-20">
+    <!-- Navbar -->
+    <nav class="content-container w-full p-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="text-2xl font-extrabold text-gray-800">Vacatio</div>
+        <!-- Navigation links - hidden on mobile, flex on medium screens and up -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Services</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Package</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">About Us</a>
+        </div>
+        <!-- Sign In/Sign Up buttons -->
+        <div class="flex items-center space-x-4">
+          <button
+            class="px-6 py-2 border border-gray-400 rounded-full text-gray-700 hover:bg-gray-200 transition duration-300">Sign
+            In</button>
+          <button class="px-6 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300">Sign
+            Up</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Content -->
+    <div class="content-container container mx-auto px-6 flex-grow flex items-center">
+      <div class="max-w-xl text-gray-800">
+        <!-- Hero Welcome Message -->
+        <div class="text-start my-8">
+          <p id="welcomeMessage" class="text-xl font-semibold">Welcome, visitor!</p>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+          Realizing Your <br> Happy Holiday
+        </h1>
+        <p class="text-lg mb-8 max-w-md">
+          We offer a wide range of carefully crafted travel packages to ensure that your dream vacation becomes an
+          extraordinary reality.
+        </p>
+      </div>
+    </div>
+
+    <!-- Search Bar / Filter Section -->
+    <div class="content-container container mx-auto px-6">
+      <div
+        class="bg-white p-6 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+        <!-- Location Input -->
+        <div class="flex items-center space-x-3 w-full md:w-auto">
+          <i class="fas fa-map-marker-alt text-gray-500"></i>
+          <div>
+            <p class="text-sm text-gray-500">Location</p>
+            <p class="font-semibold text-gray-800">Canada</p>
+          </div>
+          <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+        </div>
+
+        <!-- Person Input - border and padding only on medium screens and up -->
+        <div class="flex items-center space-x-3 w-full md:w-auto md:border-l md:border-gray-200 md:pl-4">
+          <i class="fas fa-user text-gray-500"></i>
+          <div>
+            <p class="text-sm text-gray-500">Person</p>
+            <p class="font-semibold text-gray-800">2 Persons</p>
+          </div>
+          <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+        </div>
+
+        <!-- Date Input - border and padding only on medium screens and up -->
+        <div class="flex items-center space-x-3 w-full md:w-auto md:border-l md:border-gray-200 md:pl-4">
+          <i class="fas fa-calendar-alt text-gray-500"></i>
+          <div>
+            <p class="text-sm text-gray-500">Date</p>
+            <p class="font-semibold text-gray-800">October 18 / October 22</p>
+          </div>
+          <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+        </div>
+
+        <!-- Explore Trip Button -->
+        <a href="#vacation"
+          class="w-full md:w-auto px-8 py-3 bg-blue-700 text-white rounded-full font-semibold hover:bg-blue-800 transition duration-300 shadow-md text-center">
+          Explore Trip
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popular Destinations Section -->
+  <section id="vacation" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-between items-center mb-10">
+        <div>
+          <p class="text-blue-600 text-sm font-semibold uppercase mb-2">Let's Find</p>
+          <h2 class="text-4xl font-extrabold text-gray-800 leading-tight">
+            Popular Destinations <br> You Must Visit
+          </h2>
+        </div>
+        <div class="flex space-x-4">
+          <button
+            class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition duration-300"
+            onclick="scrollDestinations(-1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button
+            class="w-12 h-12 rounded-full bg-blue-700 text-white flex items-center justify-center hover:bg-blue-800 transition duration-300"
+            onclick="scrollDestinations(1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="destination-cards-container" class="flex overflow-x-auto hide-scrollbar gap-8 pb-4">
+        <!-- Destination Card 1 -->
+        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center service-background-1">
+          <div class="w-full h-52"></div>
+          <div class="relative mt-8 px-5 pb-4">
+            <div class="bg-white rounded-2xl shadow-md p-4">
+              <h3 class="text-lg font-semibold">Moraine Lake, Canada</h3>
+              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="5 out of 5 stars">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <span class="text-gray-600 text-sm ml-2">(5.0)</span>
+              </div>
+              <div class="flex justify-between items-center mt-4">
+                <div class="text-indigo-900 font-bold text-xl">$ 2500 <span class="text-gray-400 font-normal text-sm">/
+                    3days</span></div>
+                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
+                    class="ml-1">→</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Destination Card 2 -->
+        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center service-background-2">
+          <div class="w-full h-52"></div>
+          <div class="relative mt-8 px-5 pb-4">
+            <div class="bg-white rounded-2xl shadow-md p-4">
+              <h3 class="text-lg font-semibold">Cappadocia, Turkey</h3>
+              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="5 out of 5 stars">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <span class="text-gray-600 text-sm ml-2">(5.0)</span>
+              </div>
+              <div class="flex justify-between items-center mt-4">
+                <div class="text-indigo-900 font-bold text-xl">$ 3000 <span class="text-gray-400 font-normal text-sm">/
+                    3days</span></div>
+                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
+                    class="ml-1">→</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Destination Card 3 -->
+        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center service-background-3">
+          <div class="w-full h-52"></div>
+          <div class="relative mt-8 px-5 pb-4">
+            <div class="bg-white rounded-2xl shadow-md p-4">
+              <h3 class="text-lg font-semibold">Colosseum, Roma</h3>
+              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4 out of 5 stars">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="far fa-star text-sm"></i>
+                <span class="text-gray-600 text-sm ml-2">(4.0)</span>
+              </div>
+              <div class="flex justify-between items-center mt-4">
+                <div class="text-indigo-900 font-bold text-xl">$ 1500 <span class="text-gray-400 font-normal text-sm">/
+                    3days</span></div>
+                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
+                    class="ml-1">→</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Destination Card 4 -->
+        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center service-background-4">
+          <div class="w-full h-52"></div>
+          <div class="relative mt-8 px-5 pb-4">
+            <div class="bg-white rounded-2xl shadow-md p-4">
+              <h3 class="text-lg font-semibold">Paris, France</h3>
+              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4 out of 5 stars">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="far fa-star-half-stroke text-sm"></i>
+                <span class="text-gray-600 text-sm ml-2">(4.8)</span>
+              </div>
+              <div class="flex justify-between items-center mt-4">
+                <div class="text-indigo-900 font-bold text-xl">$ 2800 <span class="text-gray-400 font-normal text-sm">/
+                    4days</span></div>
+                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
+                    class="ml-1">→</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Destination Card 5 -->
+        <article class="flex-none w-80 bg-white rounded-2xl shadow-lg overflow-hidden snap-center service-background-5">
+          <div class="w-full h-52"></div>
+          <div class="relative mt-8 px-5 pb-4">
+            <div class="bg-white rounded-2xl shadow-md p-4">
+              <h3 class="text-lg font-semibold">Tokyo, Japan</h3>
+              <div class="flex items-center text-yellow-500 mb-4" role="img" aria-label="4 out of 5 stars">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="far fa-star-half-stroke text-sm"></i>
+                <span class="text-gray-600 text-sm ml-2">(4.7)</span>
+              </div>
+              <div class="flex justify-between items-center mt-4">
+                <div class="text-indigo-900 font-bold text-xl">$ 4800 <span class="text-gray-400 font-normal text-sm">/
+                    5days</span></div>
+                <a href="#" class="text-orange-500 text-sm flex items-center">Explore more <span
+                    class="ml-1">→</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Services Section -->
+  <section class="py-16 bg-white mb-10">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="text-blue-600 text-sm font-semibold uppercase mb-2">Discover</p>
+        <h2 class="text-4xl font-extrabold text-gray-800 leading-tight">
+          Our Services
+        </h2>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+          Here are the services we provide for your fun and awesome holiday trip. Realize your holiday only with us.
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row items-center lg:items-start gap-12">
+        <!-- Left Column: Images -->
+        <div class="flex-1 flex flex-col items-center lg:items-end gap-8 relative">
+          <div
+            class="mt-5 relative w-full max-w-sm lg:max-w-md rounded-2xl overflow-hidden shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-300 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:left-0">
+            <img src="img/services-2.jpg" alt="Beach Holiday" class="w-full h-96 object-cover">
+          </div>
+          <div
+            class="mt-20 relative w-64 max-w-sm lg:max-w-md rounded-2xl overflow-hidden shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
+            <img src="img/services-1.jpg" alt="Tour Guide Service" class="w-full h-80 object-cover">
+          </div>
+
+        </div>
+
+        <!-- Right Column: Service List -->
+        <div class="flex-1 space-y-8">
+          <!-- Service Item 1: Tour Guide -->
+          <article class="flex items-center space-x-4">
+            <div class="flex-shrink-0 text-3xl font-bold text-blue-700">01</div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Tour Guide</h3>
+              <p class="text-gray-600">Vacatio provides a tour guide rental service that is certainly at a friendly
+                price to guide your trip to enjoy your dream vacation.</p>
+            </div>
+          </article>
+
+          <!-- Service Item 2: Private Transport Rental -->
+          <article class="flex items-center space-x-4">
+            <div class="flex-shrink-0 text-3xl font-bold text-blue-700">02</div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Private Transport Rental</h3>
+              <p class="text-gray-600">Vacatio also provides private transportation rental services for your private
+                vacation with loved ones. We provide car, bicycle and motorbike rental services.</p>
+            </div>
+          </article>
+
+          <!-- Service Item 3: Holiday Package -->
+          <article class="flex items-center space-x-4">
+            <div class="flex-shrink-0 text-3xl font-bold text-blue-700">03</div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Holiday Package</h3>
+              <p class="text-gray-600">Vacatio provides vacation packages that are suitable for your vacation with
+                family, friends, and those closest to you. Make an appointment now!</p>
+            </div>
+          </article>
+
+          <!-- Service Item 4: Hotel Recommendation -->
+          <article class="flex items-center space-x-4">
+            <div class="flex-shrink-0 text-3xl font-bold text-blue-700">04</div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Hotel Recommendation</h3>
+              <p class="text-gray-600">On our website, we provide some hotel recommendations for you.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hidden Paradise Section -->
+  <section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-6 flex flex-col lg:flex-row lg:items-center gap-12">
+      <!-- Left Column: Text Content -->
+      <div class="flex-1 text-center lg:text-left">
+        <p class="text-blue-600 text-sm font-semibold uppercase mb-2">Hidden Paradise</p>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-6">
+          Spending Vacation <br> Cappadocia, Turkey
+        </h2>
+        <p class="text-gray-600 text-lg mb-8 max-w-xl mx-auto lg:mx-0">
+          Santorini is an exotic island in Greece with a direct view of the sea. The island, whose real name is Thira,
+          has earned the nickname "kallisti" which means "the most beautiful." Almost every year there are many tourists
+          who choose to spend their holidays to Santorini, Greece, you know.
+        </p>
+        <a href="#"
+          class="inline-block px-8 py-3 bg-blue-700 text-white rounded-full font-semibold hover:bg-blue-800 transition duration-300 shadow-md">
+          Explore Santorini
+        </a>
+      </div>
+
+      <!-- Right Column: Image Grid -->
+      <div class="flex-1 grid grid-cols-2 grid-rows-2 gap-4 max-w-lg lg:max-w-none">
+        <figure class="rounded-2xl overflow-hidden shadow-lg col-span-2 h-[320px]">
+          <img src="img/hot-air-1.jpg" alt="Hot air balloons over Cappadocia" class="w-full h-full object-cover">
+        </figure>
+        <figure class="rounded-2xl overflow-hidden shadow-lg h-[280px]">
+          <img src="img/hot-air-2.jpg" alt="Cappadocia cave houses" class="w-full h-full object-cover">
+        </figure>
+        <figure class="rounded-2xl overflow-hidden shadow-lg h-[280px]">
+          <img src="img/hot-air-3.jpg" alt="Breakfast with a view in Cappadocia" class="w-full h-full object-cover">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Section: Find New Vacation -->
+  <section class="py-16 bg-white te">
+    <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+      <!-- Left Column: Text and Search -->
+      <div class="flex-1 text-center lg:text-left">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-6">
+          Find New Vacation <br> Don't Forget to Prepare...
+        </h2>
+        <p class="text-gray-600 text-lg mb-8 max-w-xl mx-auto lg:mx-0">
+          Let's search vacation you want! <br> Hidden vacation maybe appear here..
+        </p>
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+          <div class="relative w-full sm:w-auto flex-grow">
+            <input type="text" placeholder="Search Popular Destination Here..."
+              class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+          <button
+            class="w-full sm:w-auto px-8 py-3 bg-gray-800 text-white rounded-full font-semibold hover:bg-gray-900 transition duration-300 shadow-md">
+            Search Now
+          </button>
+        </div>
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
+          <div class="flex items-center space-x-2">
+
+            <span class="text-gray-800 font-bold text-xl">A+ Rating</span>
+          </div>
+          <div class="flex items-center text-yellow-500" role="img" aria-label="4.9 out of 5 stars">
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star text-sm"></i>
+            <i class="fas fa-star-half-alt text-sm"></i>
+            <span class="text-gray-600 text-sm ml-2 font-semibold">4.9/5.0</span>
+          </div>
+          <p class="text-gray-600">35,762 reviews on Trustpilot</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Destination Details Form -->
+      <div class="flex-1 w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+        <!-- Steps Indicator -->
+        <div class="flex justify-between items-center mb-6 text-sm font-semibold text-gray-500">
+          <div class="flex items-center tab-header active-tab" data-tab="destination">
+            <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center mr-2">1</span>
+            <span>Destination</span>
+          </div>
+          <i class="fas fa-chevron-right text-xs"></i>
+          <div class="flex items-center tab-header" data-tab="traveler">
+            <span class="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center mr-2">2</span>
+            <span>Traveler</span>
+          </div>
+          <i class="fas fa-chevron-right text-xs"></i>
+          <div class="flex items-center tab-header" data-tab="payment">
+            <span class="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center mr-2">3</span>
+            <span>Payment</span>
+          </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="destinationTabContent" class="tab-content">
+          <p class="text-blue-600 text-sm font-semibold uppercase mb-2">Setup Destination Details</p>
+          <h3 class="text-2xl font-extrabold text-gray-800 mb-6">Choose your destination <br> country and dates</h3>
+
+          <div class="space-y-6">
+            <div>
+              <label for="country" class="block text-gray-700 text-sm font-medium mb-2">Destination Country/ First
+                Port</label>
+              <div class="relative">
+                <select id="country"
+                  class="block w-full px-4 py-3 border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10">
+                  <option value="">Select Country</option>
+                  <option value="Tokyo">Tokyo</option>
+                  <option value="Rome">Rome</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Turkey">Turkey</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <div class="flex-1">
+                <label for="departure-date" class="block text-gray-700 text-sm font-medium mb-2">Departure Date</label>
+                <div class="relative">
+                  <input required type="date" id="departure-date"
+                    class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <i class="fas fa-calendar-alt text-xs"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-1">
+                <label for="return-date" class="block text-gray-700 text-sm font-medium mb-2">Return Date</label>
+                <div class="relative">
+                  <input required type="date" id="return-date"
+                    class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <i class="fas fa-calendar-alt text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="travelerTabContent" class="tab-content hidden">
+          <p class="text-blue-600 text-sm font-semibold uppercase mb-2">Tell us about yourself</p>
+          <h3 class="text-2xl font-extrabold text-gray-800 mb-6">Enter traveler details</h3>
+          <div class="space-y-6">
+            <div>
+              <label for="full-name" class="block text-gray-700 text-sm font-medium mb-2">Full Name</label>
+              <input required type="text" id="full-name"
+                class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., John Doe">
+            </div>
+            <div>
+              <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+              <input required type="email" id="email"
+                class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., john.doe@example.com">
+            </div>
+            <div>
+              <label for="phone" class="block text-gray-700 text-sm font-medium mb-2">Phone Number</label>
+              <input required type="tel" id="phone"
+                class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., +1 555 123 4567">
+            </div>
+          </div>
+        </div>
+
+        <div id="paymentTabContent" class="tab-content hidden">
+          <p class="text-blue-600 text-sm font-semibold uppercase mb-2">Final Step</p>
+          <h3 class="text-2xl font-extrabold text-gray-800 mb-6">Complete your payment</h3>
+          <div class="space-y-6">
+            <div>
+              <label for="card-number" class="block text-gray-700 text-sm font-medium mb-2">Card Number</label>
+              <input required type="text" id="card-number"
+                class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="XXXX XXXX XXXX XXXX">
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-1">
+                <label for="expiry-date" class="block text-gray-700 text-sm font-medium mb-2">Expiry Date
+                  (MM/YY)</label>
+                <input required type="text" id="expiry-date"
+                  class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="MM/YY">
+              </div>
+              <div class="flex-1">
+                <label for="cvv" class="block text-gray-700 text-sm font-medium mb-2">CVV</label>
+                <input required type="number" id="cvv"
+                  class="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="CVV">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button id="nextButton"
+          class="w-full px-8 py-3 bg-blue-700 text-white rounded-full font-semibold hover:bg-blue-800 transition duration-300 shadow-md mt-6"
+          onclick="handleNext()">
+          NEXT
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-gray-50 py-12">
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Company Info -->
+      <div class="col-span-1 md:col-span-2 lg:col-span-1 text-center md:text-left">
+        <h3 class="text-2xl font-extrabold text-gray-800 mb-4">Vacatio</h3>
+        <p class="text-gray-600 mb-6">Let's tour with us and feel the unforgettable sensation and very pleasant
+          experience.</p>
+        <div class="flex space-x-4 justify-center md:justify-start">
+          <a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">
+            <i class="fab fa-facebook-f text-lg"></i>
+          </a>
+          <a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">
+            <i class="fab fa-instagram text-lg"></i>
+          </a>
+          <a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">
+            <i class="fab fa-twitter text-lg"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pages Links -->
+      <div class="text-center md:text-left">
+        <h4 class="text-lg font-semibold text-gray-800 mb-4">Pages</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Home</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Services</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Package</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">About Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Information Links -->
+      <div class="text-center md:text-left">
+        <h4 class="text-lg font-semibold text-gray-800 mb-4">Information</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Customer Service</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Voucher</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Give Away</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Address</a></li>
+        </ul>
+      </div>
+
+      <!-- My Account Links -->
+      <div class="text-center md:text-left">
+        <h4 class="text-lg font-semibold text-gray-800 mb-4">My Account</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Profile</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Settings</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Welcome Modal -->
+  <div id="welcomeModal" class="fixed inset-0 bg-black/50 z-50 hidden flex justify-center items-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Welcome to Vacatio!</h2>
+      <p class="text-gray-700 mb-4">Please enter your name to personalize your experience:</p>
+      <div class="flex flex-col sm:flex-row gap-4 mb-6">
+        <input required type="text" id="welcomeVisitorNameInput" placeholder="Your Name"
+          class="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button id="welcomeSubmitNameButton"
+          class="px-6 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition duration-300">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Success Modal -->
+  <div id="bookingSuccessModal" class="fixed inset-0 bg-black/50 z-50 hidden flex justify-center items-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Booking Successful!</h2>
+      <div id="bookingDetails" class="bg-gray-100 p-4 rounded-lg text-gray-700 text-sm space-y-2">
+        <!-- JS akan isi disini -->
+      </div>
+      <button
+        class="mt-6 w-full px-6 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition duration-300"
+        onclick="closeModal('bookingSuccessModal')">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <!-- Warning Message -->
+  <div id="autoDismissAlert"
+    class="fixed top-4 left-1/2 transform -translate-x-1/2 -translate-y-10 opacity-0 transition-all duration-300 bg-red-500 text-white py-2 px-6 rounded shadow-lg hidden z-50">
+    <span id="autoDismissAlertText"></span>
+  </div>
+
+
+  <script src="/js/script.js"></script>
+</body>
+
+</html>
