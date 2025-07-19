@@ -14,7 +14,7 @@ You only need a modern web browser (like Google Chrome, Mozilla Firefox, Microso
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/Revou-Coding-Camp/codingcamp-14-jul-25-initialgr.git](https://github.com/Revou-Coding-Camp/codingcamp-14-jul-25-initialgr.git)
+    git clone https://github.com/Revou-Coding-Camp/codingcamp-14-jul-25-initialgr.git
     ```
 2.  **Navigate into the project directory:**
     ```bash
