@@ -396,19 +396,21 @@
 
       <!-- Right Column: Destination Details Form -->
       <div class="flex-1 w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
-        <!-- Steps Indicator -->
-        <div class="flex justify-between items-center mb-6 text-sm font-semibold text-gray-500">
-          <div class="flex items-center tab-header active-tab" data-tab="destination">
+        <!-- Steps Indicator - MODIFIED FOR RESPONSIVENESS -->
+        <div
+          class="flex overflow-x-auto whitespace-nowrap gap-4 pb-2 mb-6 text-sm font-semibold text-gray-500 md:justify-between">
+          <!-- MODIFIED: Added flex-none and snap-start -->
+          <div class="flex-none flex items-center tab-header active-tab snap-start" data-tab="destination">
             <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center mr-2">1</span>
             <span>Destination</span>
           </div>
-          <i class="fas fa-chevron-right text-xs"></i>
-          <div class="flex items-center tab-header" data-tab="traveler">
+          <i class="fas fa-chevron-right text-xs flex-none"></i> <!-- Added flex-none -->
+          <div class="flex-none flex items-center tab-header snap-start" data-tab="traveler">
             <span class="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center mr-2">2</span>
             <span>Traveler</span>
           </div>
-          <i class="fas fa-chevron-right text-xs"></i>
-          <div class="flex items-center tab-header" data-tab="payment">
+          <i class="fas fa-chevron-right text-xs flex-none"></i> <!-- Added flex-none -->
+          <div class="flex-none flex items-center tab-header snap-start" data-tab="payment">
             <span class="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center mr-2">3</span>
             <span>Payment</span>
           </div>
