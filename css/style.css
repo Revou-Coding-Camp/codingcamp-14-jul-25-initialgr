@@ -4,7 +4,7 @@ body {
 
 .hero-background {
   /* Placeholder image - replace with your actual image */
-  background-image: url('/img/hero.jpg');
+  background-image: url('../img/hero.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -30,7 +30,7 @@ body {
 
 .service-background-1 {
   /* Placeholder image - replace with your actual image */
-  background-image: url('/img/vacation-1.jpg');
+  background-image: url('../img/vacation-1.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -39,7 +39,7 @@ body {
 
 .service-background-2 {
   /* Placeholder image - replace with your actual image */
-  background-image: url('/img/vacation-2.jpg');
+  background-image: url('../img/vacation-2.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -48,7 +48,7 @@ body {
 
 .service-background-3 {
   /* Placeholder image - replace with your actual image */
-  background-image: url('/img/vacation-3.jpg');
+  background-image: url('../img/vacation-3.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -57,7 +57,7 @@ body {
 
 .service-background-4 {
   /* Placeholder image - replace with your actual image */
-  background-image: url('/img/vacation-4.jpg');
+  background-image: url('../img/vacation-4.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -66,7 +66,7 @@ body {
 
 .service-background-5 {
   /* Placeholder image - replace with your actual image */
-  background-image: url('/img/vacation-5.jpg');
+  background-image: url('../img/vacation-5.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
